@@ -12669,11 +12669,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fabia\\source\\repos\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
+      "projectUniqueName": "C:\\Users\\fabia\\Documents\\GitHub\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
       "projectName": "AmazonSimulator VS",
-      "projectPath": "C:\\Users\\fabia\\source\\repos\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
+      "projectPath": "C:\\Users\\fabia\\Documents\\GitHub\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
       "packagesPath": "C:\\Users\\fabia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fabia\\source\\repos\\AmazonSimulator VS\\AmazonSimulator VS\\obj\\",
+      "outputPath": "C:\\Users\\fabia\\Documents\\GitHub\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

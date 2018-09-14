@@ -6,7 +6,7 @@ using Controllers;
 namespace Models {
     public class World : IObservable<Command>, IUpdatable
     {
-        private List<C3Dmodel> worldObjects = new List<C3Dmodel>();
+        private List<Robot> worldObjects = new List<Robot>();
         private List<IObserver<Command>> observers = new List<IObserver<Command>>();
         
         public World() {
@@ -45,7 +45,7 @@ namespace Models {
         public bool Update(int tick)
         {
             for(int i = 0; i < worldObjects.Count; i++) {
-                C3Dmodel u = worldObjects[i];
+                Robot u = worldObjects[i];
 
                 if(u is IUpdatable) {
                     bool needsCommand = ((IUpdatable)u).Update(tick);
