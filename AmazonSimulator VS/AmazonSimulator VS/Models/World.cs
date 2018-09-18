@@ -12,6 +12,7 @@ namespace Models {
         
         public World() {
             Robot r = CreateRobot(0,0,0);
+            r.Move(15, 2.5, 15);
         }
 
         private Robot CreateRobot(double x, double y, double z) {
