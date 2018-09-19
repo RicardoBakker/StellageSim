@@ -10,7 +10,7 @@ namespace Models
         public Vrachtwagen(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
         {
             this.type = "vrachtwagen";
-            this.needsUpdate = true;
+            this.guid = Guid.NewGuid();
         }
     }
 }
