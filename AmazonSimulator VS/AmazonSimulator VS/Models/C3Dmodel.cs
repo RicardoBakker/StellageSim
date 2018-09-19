@@ -14,6 +14,13 @@ namespace Models
         protected double _rY = 0;
         protected double _rZ = 0;
 
+        protected double step = 0.002;
+        public double xDirection { set; get; }
+        public double yDirection { set; get; }
+        public double zDirection { set; get; }
+        public double xDestination { set; get; }
+        public double yDestination { set; get; }
+        public double zDestination { set; get; }
 
         public bool needsUpdate { set; get; }
         public string type { set; get; }

@@ -13,12 +13,16 @@ namespace Models
 
         public World()
         {
-            Robot r = CreateRobot(0, 0, 0);
-            Vrachtwagen v = CreateVrachtwagen(0, 0, 0);
-            Robot r2 = CreateRobot(0, 0, 0);
-            v.Move(-10, -10, -10);
-            r.Move(4.6, 0, 13);
-            r2.Move(10, 0, 13);
+            Robot r = CreateRobot(1, 0.5, 10);
+            Vrachtwagen v = CreateVrachtwagen(30, 10, 0);
+            Robot r2 = CreateRobot(1, 0.5, 1);
+            //r2.Move(10, 0, 13);
+            v.Rotate(0, -90*(Math.PI / 180), 0);
+            r.GiveDestination(10, 0.5, 10);
+            r2.GiveDestination(1, 0.5, 10);
+            v.GiveDestination(5, 0, 0);
+            
+            
         }
 
         private Vrachtwagen CreateVrachtwagen(double x, double y, double z)
