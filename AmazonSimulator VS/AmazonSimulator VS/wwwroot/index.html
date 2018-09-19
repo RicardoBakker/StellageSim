@@ -26,7 +26,7 @@
                 camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
                 cameraControls = new THREE.OrbitControls(camera);
 
-                camera.position.z = 30;
+                camera.position.z = 15;
                 camera.position.y = 10;
                 camera.position.x = 15;
                 cameraControls.update();
@@ -99,8 +99,8 @@
                                 {
                                     var group = new THREE.Group();
                                     worldObjects[command.parameters.guid] = group;
-                                    loadOBJModel("Hexapod/", "Hexapodmin.obj", "Hexapod/", "Hexapodmin.mtl", (mesh) => {
-                                        mesh.scale.set(0.005, 0.005, 0.005);
+                                    loadOBJModel("Hexapod/", "rickmodel.obj", "Hexapod/", "rickmat.mtl", (mesh) => {
+                                        mesh.scale.set(1, 1, 1);
                                         group.add(mesh);
                                         scene.add(group);
                                     });

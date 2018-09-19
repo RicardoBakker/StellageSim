@@ -18,6 +18,7 @@ namespace Models
             Robot r2 = CreateRobot(1, 0.5, 1);
             //r2.Move(10, 0, 13);
             v.Rotate(0, -90*(Math.PI / 180), 0);
+            r2.Rotate(0, -90 * (Math.PI / 180), 0);
             r.GiveDestination(10, 0.5, 10);
             r2.GiveDestination(1, 0.5, 10);
             v.GiveDestination(5, 0, 0);
