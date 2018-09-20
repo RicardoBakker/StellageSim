@@ -54,13 +54,12 @@
                 plane.position.x = 15;
                 plane.position.z = 15;
                 scene.add(plane);
+                console.log("Plane is gecreeert.");
 
                 // Light
-                var light = new THREE.PointLight(0xFFFFFF);
-                light.position.x = 0;
-                light.position.y = 50;
-                light.position.z = 0;
+                var light = new THREE.AmbientLight(0xFFFFFF);
                 scene.add(light);
+                console.log("Light[PointLight] is ingesteld.");
             }
 
             // Function Window
@@ -72,11 +71,9 @@
 
             // Function Animate
             function animate() {
-                bot.rotationX += 0.1;
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
             }
-            animate();
 
             // Function Object Loader
             function loadOBJModel(modelPath, modelName, texturePath, textureName, onload) {
@@ -107,7 +104,7 @@
                     // Check for new guid
                     if (Object.keys(worldObjects).indexOf(command.parameters.guid) < 0) {
 
-                        // Create bot in Group
+                        // Create bot object
                         if (command.parameters.type == "robot") {
                             var bot = new THREE.Group();
                             bot.position.z = 15;
@@ -117,16 +114,35 @@
                             scene.add(bot);
 
                             // Gives bot a texture
-                            loadOBJModel("Rickpod/", "rickmodel.obj", "Rickpod/", "rickmat.mtl", (mesh) => {
+                            loadOBJModel("Bot/", "Bot.obj", "Bot/", "Bot.mtl", (mesh) => {
                                 mesh.scale.set(5, 5, 5);
                                 bot.add(mesh);
                             });
+                            console.log("Nieuwe robot gecreeert.");
+                        }
+
+                        // Create truck object
+                        if (command.parameters.type == "vrachtwagen") {
+                            var truck = new THREE.Group();
+                            truck.position.z = 10;
+                            truck.position.y = 2.5;
+                            truck.position.x = 10;
+                            worldObjects[command.parameters.guid] = truck;
+                            scene.add(truck);
+
+                            // Gives truck a texture
+                            loadOBJModel("Truck/", "Truck.obj", "Truck/", "Truck.mtl", (mesh) => {
+                                mesh.scale.set(5, 5, 5);
+                                truck.add(mesh);
+                            });
+                            console.log("Nieuwe truck gecreeert.");
                         }
                     }
 
                     // Collects all objects to Group
                     var group = new THREE.Group();
                     group.add(bot);
+                    group.add(truck);
                     scene.add(group);
 
                     // Give objects given parameters
@@ -141,6 +157,8 @@
             }
 
             init();
+            animate();
+
         }
     </script>
     <script src="three.min.js"></script>
