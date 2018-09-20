@@ -26,9 +26,17 @@ namespace Models
         public override bool Update(int tick)
         {
             //aankomen
-            if ((Math.Round(xDestination, 2) != Math.Round(x, 2)) || (Math.Round(yDestination, 2) != Math.Round(y, 2)) || (Math.Round(zDestination, 2) != Math.Round(z, 2)))
+            if (Math.Round(xDestination, 2) != Math.Round(x, 2))
             {
-                Move(x + step * xDirection, y + step * yDirection, z + step * zDirection);
+                Move(x + step * xDirection, y , z );
+            }
+            if (Math.Round(yDestination*2, 2) != Math.Round(y, 2)) 
+            {
+                Move(x , y + step * yDirection*2, z);
+            }
+            if (Math.Round(zDestination, 2) != Math.Round(z, 2))
+            {
+                Move(x , y, z + step * zDirection);
             }
 
             return base.Update(tick);
