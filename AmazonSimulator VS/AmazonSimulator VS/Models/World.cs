@@ -14,16 +14,12 @@ namespace Models
         public World()
         {
             Robot r = CreateRobot(1, 0.5, 10);
-            Vrachtwagen v = CreateVrachtwagen(30, 10, 0);
             Robot r2 = CreateRobot(1, 0.5, 1);
-<<<<<<< HEAD
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
             //Dock d = CreateDock(0, 0, 0);
             v.Rotate(0, -90 * (Math.PI / 180), 0);
-=======
             //r2.Move(10, 0, 13);
             v.Rotate(0, -90*(Math.PI / 180), 0);
->>>>>>> parent of 2824257... k
             r2.Rotate(0, -90 * (Math.PI / 180), 0);
             r.GiveDestination(10, 0.5, 10);
             r2.GiveDestination(1, 0.5, 10);
