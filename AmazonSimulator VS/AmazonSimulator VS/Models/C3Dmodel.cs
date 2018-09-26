@@ -5,15 +5,22 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class C3Dmodel : IUpdatable
+    public abstract class C3Dmodel : IUpdatable
     {
-        private double _x = 0;
-        private double _y = 0;
-        private double _z = 0;
-        private double _rX = 0;
-        private double _rY = 0;
-        private double _rZ = 0;
+        protected double _x = 0;
+        protected double _y = 0;
+        protected double _z = 0;
+        protected double _rX = 0;
+        protected double _rY = 0;
+        protected double _rZ = 0;
 
+        protected double step = 0.002;
+        public double xDirection { set; get; }
+        public double yDirection { set; get; }
+        public double zDirection { set; get; }
+        public double xDestination { set; get; }
+        public double yDestination { set; get; }
+        public double zDestination { set; get; }
 
         public bool needsUpdate { set; get; }
         public string type { set; get; }
@@ -25,18 +32,20 @@ namespace Models
         public double rotationY { get { return _rY; } }
         public double rotationZ { get { return _rZ; } }
 
+
         public C3Dmodel(double x, double y, double z, double rotationX, double rotationY, double rotationZ)
         {
-            this.guid = Guid.NewGuid();
             this._x = x;
             this._y = y;
             this._z = z;
             this._rX = rotationX;
             this._rY = rotationY;
             this._rZ = rotationZ;
+            this.needsUpdate = true;
         }
         public virtual bool Update(int tick)
         {
+            
             if (needsUpdate)
             {
                 needsUpdate = false;
