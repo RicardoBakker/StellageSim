@@ -15,6 +15,7 @@ namespace Models
         {
             Robot r = CreateRobot(1, 0.5, 10);
             Robot r2 = CreateRobot(1, 0.5, 1);
+            Robot r3 = CreateRobot(1, 0.5, 5);
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
             //Dock d = CreateDock(0, 0, 0);
             v.Rotate(0, -90 * (Math.PI / 180), 0);
@@ -23,6 +24,7 @@ namespace Models
             r2.Rotate(0, -90 * (Math.PI / 180), 0);
             r.GiveDestination(10, 0.5, 10);
             r2.GiveDestination(1, 0.5, 10);
+            r3.GiveDestination(10, 0.5, 5);
             v.GiveDestination(5, 0, 0);
             
             
