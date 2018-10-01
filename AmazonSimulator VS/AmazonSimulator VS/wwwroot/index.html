@@ -22,42 +22,24 @@
             var worldObjects = {};
 
             function init() {
+
+                // Camera
                 camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
                 cameraControls = new THREE.OrbitControls(camera);
-
                 camera.position.z = 15;
                 camera.position.y = 10;
                 camera.position.x = 15;
                 cameraControls.update();
                 scene = new THREE.Scene();
-
-                // World AmbientLight               <-- No Error? Shadow not working?
-                ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-                scene.add(ambientLight);
-
-                // World PointLight                 <-- No Error? Shadow not working?
-                worldLight = new THREE.PointLight(0xffffff, 1, 18);
-                worldLight.position.set(-3, 10, -3);
-                worldLight.castShadow = true;
-                worldLight.shadow.camera.near = 0.1;
-                worldLight.shadow.camera.far = 25;
-                scene.add(worldLight);
-
-                renderer = new THREE.WebGLRenderer({ antialias: true });
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight + 5);
-                document.body.appendChild(renderer.domElement);
-                renderer.shadowMap.enabled = true;              
-                renderer.shadowMap.type = THREE.BasicShadowMap;
-
                 window.addEventListener('resize', onWindowResize, false);
 
+                // Skybox
                 var sphericalSkyboxGeometry = new THREE.SphereGeometry(100, 32, 32);
                 var sphericalSkyboxMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("textures/SkySphere2.jpg"), side: THREE.DoubleSide });
                 var sphericalSkybox = new THREE.Mesh(sphericalSkyboxGeometry, sphericalSkyboxMaterial);
-
                 scene.add(sphericalSkybox);
 
+                // Plane
                 var geometry = new THREE.BoxGeometry(20, 20, 0);
                 var material = new THREE.MeshBasicMaterial({ color: 0x323232, side: THREE.DoubleSide });
                 var plane = new THREE.Mesh(geometry, material);
@@ -68,6 +50,31 @@
                 plane.castShadow = false;
                 plane.receiveShadow = true;
                 scene.add(plane);
+
+                // Ambient Light
+                scene.add(new THREE.AmbientLight(0x666666));
+
+                // Directional Light
+                var directionalLight = new THREE.DirectionalLight(0xffffff);
+                directionalLight.position.set(5, 0, 5);
+                directionalLight.target.position.set(0, 0, 0);
+                directionalLight.castShadow = true;
+                directionalLight.shadowDarkness = 0.5;
+                directionalLight.shadowCameraNear = 0;
+                directionalLight.shadowCameraFar = 15;
+                directionalLight.shadowCameraLeft = -5;
+                directionalLight.shadowCameraRight = 5;
+                directionalLight.shadowCameraTop = 15;
+                directionalLight.shadowCameraBottom = -5;
+                scene.add(directionalLight);
+
+                // Render
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight + 5);
+                document.body.appendChild(renderer.domElement);
+                renderer.shadowMap.enabled = true;
+                renderer.shadowMapSoft = true;
             }
 
             // Add Pointlight       <-- Error, kan dit wel?
@@ -87,18 +94,21 @@
                 spotLight.target.position.set(tx, ty, tz);
             }
 
+            // WindowResize [Function]
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
 
+            // Animate [Function]
             function animate() {
                 requestAnimationFrame(animate);
                 cameraControls.update();
                 renderer.render(scene, camera);
             }
 
+            // Model Loader [Function]
             function loadOBJModel(modelPath, modelName, texturePath, textureName, onload) {
                 new THREE.MTLLoader()
                     .setPath(texturePath)
@@ -115,25 +125,23 @@
                     });
             }
 
+            // Model Deployer [Server]
             exampleSocket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/connect_client");
             exampleSocket.onmessage = function (event) {
                 var command = parseCommand(event.data);
-
                 console.log(command);
-
                 if (command.command === "update") {
                     if (Object.keys(worldObjects).indexOf(command.parameters.guid) < 0) {
                         switch (command.parameters.type) {
                             case "robot":
                                 {
                                     var robot = new THREE.Group();
+                                    robot.castShadow = true;
+                                    robot.visible = true;
                                     worldObjects[command.parameters.guid] = robot;
                                     loadOBJModel("Hexapod/", "rickmodel.obj", "Hexapod/", "rickmat.mtl", (mesh) => {
                                         mesh.scale.set(1, 1, 1);
                                         robot.add(mesh);
-                                        robot.castShadow = true;
-                                        robot.receiveShadow = true;
-                                        robot.visible = true;
                                         //addPointLight(robot, 0xffffff, 1, 0.8, 10, 2, 5);     // <-- Error?
                                         //addSpotLight(robot, 0xffffff, 1, 0.8, 10, 2, 5);      // <-- Error?
                                         scene.add(robot);
@@ -143,46 +151,67 @@
                             case "vrachtwagen":
                                 {
                                     var vrachtwagen = new THREE.Group();
-
+                                    vrachtwagen.castShadow = true;
+                                    vrachtwagen.visible = true;
                                     worldObjects[command.parameters.guid] = vrachtwagen;
-                                    loadOBJModel("Hexapod/", "Freigther_BI_Export.obj", "Hexapod/", "Freigther_BI_Export.mtl", (mesh) => {
-                                        mesh.scale.set(0.5, 0.5, 0.5);
+                                    loadOBJModel("Hexapod/", "ufo.obj", "Hexapod/", "ufo.mtl", (mesh) => {
+                                        mesh.scale.set(3, 3, 3);
                                         vrachtwagen.add(mesh);
-                                        vrachtwagen.castShadow = true;
-                                        vrachtwagen.receiveShadow = true;
-                                        vrachtwagen.visible = false;
                                         //addPointLight(vrachtwagen, 0xffffff, 1, 0.8, 10, 2, 5);       // <-- Error?
                                         //addSpotLight(vrachtwagen, 0xffffff, 1, 0.8, 10, 2, 5);        // <-- Error?
                                         scene.add(vrachtwagen);
                                     });
                                     break;
                                 }
-
+                            case "dock":
+                                {
+                                    var dock = new THREE.Group();
+                                    dock.castShadow = true;
+                                    dock.visible = true;
+                                    worldObjects[command.parameters.guid] = dock;
+                                    loadOBJModel("Hexapod/", "dock.obj", "Hexapod/", "dock.mtl", (mesh) => {
+                                        mesh.scale.set(2, 2, 2);
+                                        dock.add(mesh);
+                                        scene.add(dock);
+                                    });
+                                    break;
+                                }
+                            case "stellage":
+                                {
+                                    var stellage = new THREE.Group();
+                                    stellage.castShadow = true;
+                                    stellage.visible = true;
+                                    worldObjects[command.parameters.guid] = stellage;
+                                    loadOBJModel("Hexapod/", "butter.obj", "Hexapod/", "butter.mtl", (mesh) => {
+                                        mesh.scale.set(1, 1, 1);
+                                        stellage.add(mesh);
+                                        scene.add(stellage);
+                                    });
+                                    break;
+                                }
                             default:
                         }
                     }
 
+                    // Object Parameters
                     var object = worldObjects[command.parameters.guid];
-
                     object.position.x = command.parameters.x;
                     object.position.y = command.parameters.y;
                     object.position.z = command.parameters.z;
-
                     object.rotation.x = command.parameters.rotationX;
                     object.rotation.y = command.parameters.rotationY;
                     object.rotation.z = command.parameters.rotationZ;
                 }
             };
-
             init();
             animate();
         };
     </script>
-
     <script src="three.min.js"></script>
     <script src="OrbitControls.js"></script>
     <script src="MTLLoader.js"></script>
     <script src="OBJLoader.js"></script>
+    <script src="LightShadow.js"></script>
 </body>
 
 </html>
