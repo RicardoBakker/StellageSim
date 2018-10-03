@@ -28,8 +28,13 @@ namespace Models
             //xDestination = x1;
             //yDestination = y1;
             //zDestination = z1;
-            DestinationList.AddRange(nodes);
-            Destination = DestinationList[0];
+            if (nodes != null)
+            {
+                DestinationList = nodes;
+                Destination = DestinationList[0];
+            }
+
+
             xDirection = Destination.xD - x;
             yDirection = Destination.yD - y;
             zDirection = Destination.zD - z;
@@ -43,7 +48,6 @@ namespace Models
             //bewegen
             if ((Math.Round(xDestination, 2) != Math.Round(x, 2)) || (Math.Round(yDestination, 2) != Math.Round(y, 2)) || (Math.Round(zDestination, 1) != Math.Round(z, 1)))
             {
-                Destination = DestinationList.First();
                 Move(x + step * xDirection, y + step * yDirection, z + step * zDirection);
             }
             else if (needsUpdate == false)
@@ -52,7 +56,7 @@ namespace Models
                 {
                     DestinationList.RemoveAt(0);
                     GiveDestination(DestinationList);
-                    
+
                 }
                 catch (Exception)
                 {

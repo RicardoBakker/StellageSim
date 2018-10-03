@@ -19,21 +19,23 @@ namespace Models
             //Dock d = CreateDock(0, 0, 0);
             v.Rotate(0, -90 * (Math.PI / 180), 0);
             //r2.Move(10, 0, 13);
-            GraphNode<String> NodeA = new GraphNode<String>("A", 7, 0.5, 8);
-            GraphNode<String> NodeB = new GraphNode<String>("A", 5, 0.5, 5);
-            GraphNode<String> NodeC = new GraphNode<String>("A", 1, 0.5, 1);
-            GraphNode<String> NodeD = new GraphNode<String>("A", 10, 0.5, 2);
-            GraphNode<String> NodeE = new GraphNode<String>("A", 2, 0.5, 20);
-            GraphNode<String> NodeF = new GraphNode<String>("A", 3, 0.5, 2);
-            GraphNode<String> NodeG = new GraphNode<String>("A", 0, 0.5, 0);
-            List<GraphNode<String>> nodelist = new List<GraphNode<String>> {NodeA, NodeB, NodeC, NodeD, NodeE, NodeF, NodeG};
+            GraphNode<String> NodeA = new GraphNode<String>("A", 0, 0.5, 5);
+            GraphNode<String> NodeB = new GraphNode<String>("B", 5, 0.5, 5);
+            GraphNode<String> NodeC = new GraphNode<String>("C", 5, 0.5, 10);
+            GraphNode<String> NodeD = new GraphNode<String>("D", 10, 0.5, 10);
+            GraphNode<String> NodeE = new GraphNode<String>("E", 10, 0.5, 5);
+            GraphNode<String> NodeF = new GraphNode<String>("F", 5, 0.5, 5);
+            GraphNode<String> NodeG = new GraphNode<String>("G", 5, 0.5, 0);
+
+            List<GraphNode<String>> nodelist = new List<GraphNode<String>> {NodeA, NodeB, NodeC/*, NodeD, NodeE, NodeF, NodeG*/};
             v.Rotate(0, -90*(Math.PI / 180), 0);
             r2.Rotate(0, -90 * (Math.PI / 180), 0);
             r.GiveDestination(nodelist /*,10, 0.5, 10*/);
             nodelist.Reverse();
             r2.GiveDestination(nodelist/*, 1, 0.5, 10*/);
+
             v.GiveDestination(5, 0, 0);
-            
+           
             
         }
         private Dock CreateDock(double x, double y, double z)
