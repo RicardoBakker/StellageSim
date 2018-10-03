@@ -31,7 +31,8 @@ namespace Models
         public double rotationX { get { return _rX; } }
         public double rotationY { get { return _rY; } }
         public double rotationZ { get { return _rZ; } }
-
+        public List<GraphNode<String>> DestinationList { get; set; }
+        public GraphNode<String> Destination { get; set; }
 
         public C3Dmodel(double x, double y, double z, double rotationX, double rotationY, double rotationZ)
         {

@@ -8,14 +8,26 @@ namespace Models
 {
     public class GraphNode<T>
     {
+        //naam van node (A/B/C... 1/2/3... whatever)
         T value;
+        //coördinaten
+        public double xD;
+        public double yD;
+        public double zD;
+        //aanliggende nodes
         List<GraphNode<T>> neighbors;
 
-        public GraphNode(T value)
+        public GraphNode(T value, double x, double y, double z)
         {
+            //Benodigd voor aanmaken
+            xD = x;
+            yD = y;
+            zD = z;
             this.value = value;
             neighbors = new List<GraphNode<T>>();
         }
+
+        //Deze volgende methoden spreken voor zich
         public T Value
         {
             get { return value; }
@@ -37,7 +49,6 @@ namespace Models
                 neighbors.Add(neighbor);
                 return true;
             }
-
         }
         public bool RemoveNeighbor(GraphNode<T> neighbor)
         {
@@ -51,6 +62,7 @@ namespace Models
             }
             return true;
         }
+
 
     }
 
@@ -75,24 +87,25 @@ namespace Models
             {
                 node.RemoveAllNeighbors();
             }
-            for (int i= nodes.Count -1; i>= 0; i--)
+            for (int i = nodes.Count - 1; i >= 0; i--)
             {
                 nodes.RemoveAt(i);
             }
         }
-        public bool AddNode (T value)
+        public bool AddNode(T value, double x, double y, double z)
         {
             if (Find(value) != null)
-                {
+            {
                 return false;
             }
-            else {
-                nodes.Add(new GraphNode<T>(value));
+            else
+            {
+                nodes.Add(new GraphNode<T>(value, x, y, z));
                 return true;
             }
-            
+
         }
-        public bool AddEdge (T value1, T value2)
+        public bool AddEdge(T value1, T value2)
         {
             GraphNode<T> node1 = Find(value1);
             GraphNode<T> node2 = Find(value2);
@@ -149,7 +162,7 @@ namespace Models
             for (int i = 0; i < Count; i++)
             {
                 builder.Append(nodes[i].ToString());
-                if (i<Count-1)
+                if (i < Count - 1)
                 {
                     builder.Append(",");
                 }
