@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Text;
-=======
->>>>>>> ricardo
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +8,6 @@ namespace Models
 {
     public class GraphNode<T>
     {
-<<<<<<< HEAD
         //naam van node (A/B/C... 1/2/3... whatever)
         T value;
         //coördinaten
@@ -66,15 +62,10 @@ namespace Models
             }
             return true;
         }
-
-
-=======
->>>>>>> ricardo
     }
 
     public class Graph<T>
     {
-<<<<<<< HEAD
         List<GraphNode<T>> nodes = new List<GraphNode<T>>();
         public Graph()
         {
@@ -180,7 +171,3 @@ namespace Models
 
     }
 }
-=======
-    }
-}
->>>>>>> ricardo

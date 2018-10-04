@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Models
-{
-    public class Stellage : C3Dmodel
-{
-        public Stellage(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
-        {
-            this.type = "stellage";
-            this.needsUpdate = true;
-        }
-    }
-}
-=======
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,4 +27,3 @@ namespace Models
         }
     }
 }
->>>>>>> ricardo
