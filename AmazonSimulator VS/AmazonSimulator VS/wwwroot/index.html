@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>SimulationView</title>
+    <title>Butter Simulator</title>
 </head>
 
 <body style="margin:0px;padding:0px;overflow:hidden;">
@@ -24,13 +24,13 @@
             function init() {
 
                 // Camera
+                scene = new THREE.Scene();
                 camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
                 cameraControls = new THREE.OrbitControls(camera);
                 camera.position.z = 15;
                 camera.position.y = 10;
                 camera.position.x = 15;
                 cameraControls.update();
-                scene = new THREE.Scene();
                 window.addEventListener('resize', onWindowResize, false);
 
                 // Skybox
@@ -41,7 +41,7 @@
 
                 // Plane
                 var geometry = new THREE.BoxGeometry(20, 20, 0);
-                var material = new THREE.MeshBasicMaterial({ color: 0x323232, side: THREE.DoubleSide });
+                var material = new THREE.MeshBasicMaterial({ color: 0xCDCDCD, side: THREE.DoubleSide });
                 var plane = new THREE.Mesh(geometry, material);
                 plane.rotation.x = 90 *(Math.PI/180);
                 plane.position.x = 5;
@@ -56,15 +56,15 @@
                 // Directional Light
                 var directionalLight = new THREE.DirectionalLight(0xffffff);
                 directionalLight.position.set(15, 0, 5);
-                directionalLight.target.position.set(0, 0, 0);
+                directionalLight.target.position.set(3, 0, 3);
                 directionalLight.castShadow = true;
                 directionalLight.shadowDarkness = 0.5;
                 directionalLight.shadowCameraNear = 0;
                 directionalLight.shadowCameraFar = 200;
-                directionalLight.shadowCameraLeft = -5;
-                directionalLight.shadowCameraRight = 5;
-                directionalLight.shadowCameraTop = 15;
-                directionalLight.shadowCameraBottom = -5;
+                directionalLight.shadowCameraLeft = -20;
+                directionalLight.shadowCameraRight = 20;
+                directionalLight.shadowCameraTop = 50;
+                directionalLight.shadowCameraBottom = -10;
                 scene.add(directionalLight);
 
                 // Render
