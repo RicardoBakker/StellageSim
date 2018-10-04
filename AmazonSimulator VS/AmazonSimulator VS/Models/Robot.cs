@@ -10,6 +10,8 @@ namespace Models
 {
     public class Robot : C3Dmodel, IUpdatable
     {
+        public List<Vector> _DestinationList;
+        public Vector _Destination;
 
         //Constructor
         public Robot(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
@@ -20,27 +22,27 @@ namespace Models
         }
 
         //geef bestemming
-        public List<GraphNode<String>> GiveDestination(/*double x1, double y1, double z1, */List<GraphNode<String>> nodes)
+        public void GiveDestination(/*double x1, double y1, double z1, */List<Vector> graphNodes)
         {
-            //xDirection = x1 - x;
-            //yDirection = y1 - y;
-            //zDirection = z1 - z;
-            //xDestination = x1;
-            //yDestination = y1;
-            //zDestination = z1;
-            if (nodes.Count > 0)
+           // xDirection = x1 - x;
+           // yDirection = y1 - y;
+           // zDirection = z1 - z;
+           // xDestination = x1;
+           // yDestination = y1;
+           //Destination = z1;
+            if (graphNodes.Count > 0)
             {
-                _DestinationList = nodes;
-                _Destination = nodes[0];
+                _DestinationList = graphNodes;
+                _Destination = graphNodes[0];
+               _xDirection = _Destination.x - x;
+              _yDirection = _Destination.y - y;
+               _zDirection = _Destination.z- z;
+               _xDestination = _Destination.x;
+               _yDestination = _Destination.y;
+                _zDestination = _Destination.z;
                 _DestinationList.RemoveAt(0);
-                _xDirection = Destination.xD - x;
-                _yDirection = Destination.yD - y;
-                _zDirection = Destination.zD - z;
-                _xDestination = Destination.xD;
-                _yDestination = Destination.yD;
-                _zDestination = Destination.zD;
+                
             }
-            return nodes;
         }
 
         public override bool Update(int tick)
@@ -52,7 +54,7 @@ namespace Models
             }
             else
             {
-              this.GiveDestination(_DestinationList);
+                this.GiveDestination(_DestinationList);
             }
             return base.Update(tick);
         }

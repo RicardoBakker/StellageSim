@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Wouter Nauta\source\repos\NHL\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.csprojAssemblyReference.cache
 C:\Users\Wouter Nauta\source\repos\NHL\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.csproj.CoreCompileInputs.cache
 C:\Users\Wouter Nauta\source\repos\NHL\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfoInputs.cache
@@ -32,7 +31,6 @@ C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator V
 C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfo.cs
 C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.dll
 C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
-=======
 C:\Users\Ricardo\Desktop\3D SIM\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.deps.json
 C:\Users\Ricardo\Desktop\3D SIM\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.runtimeconfig.json
 C:\Users\Ricardo\Desktop\3D SIM\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.runtimeconfig.dev.json
@@ -55,4 +53,3 @@ C:\Users\RBakk\Desktop\3D Project\StellageSim\AmazonSimulator VS\AmazonSimulator
 C:\Users\RBakk\Desktop\3D Project\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfo.cs
 C:\Users\RBakk\Desktop\3D Project\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.dll
 C:\Users\RBakk\Desktop\3D Project\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
->>>>>>> ricardo
