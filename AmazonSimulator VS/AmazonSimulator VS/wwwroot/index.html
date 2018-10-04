@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
     <title>SimulationView</title>
 </head>
 
@@ -11,14 +10,6 @@
 
 
     <script>
-=======
-    <title>Butter Simulator</title>
-</head>
-
-<body style="margin:0px;padding:0px;overflow:hidden;">
-    <script>
-
->>>>>>> ricardo
         function parseCommand(input = "") {
             return JSON.parse(input);
         }
@@ -32,7 +23,6 @@
             var worldObjects = {};
 
             function init() {
-<<<<<<< HEAD
                 camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
                 cameraControls = new THREE.OrbitControls(camera);
 <<<<<<< HEAD
@@ -86,91 +76,12 @@
                 scene.add(light);
             }
 
-=======
-
-                // Camera
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
-                cameraControls = new THREE.OrbitControls(camera);
-                camera.position.z = 15;
-                camera.position.y = 10;
-                camera.position.x = 15;
-                cameraControls.update();
-                window.addEventListener('resize', onWindowResize, false);
-
-                // Skybox
-                var sphericalSkyboxGeometry = new THREE.SphereGeometry(100, 32, 32);
-                var sphericalSkyboxMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("textures/SkySphere2.jpg"), side: THREE.DoubleSide });
-                var sphericalSkybox = new THREE.Mesh(sphericalSkyboxGeometry, sphericalSkyboxMaterial);
-                scene.add(sphericalSkybox);
-
-                // Plane
-                var geometry = new THREE.BoxGeometry(20, 20, 0);
-                var material = new THREE.MeshBasicMaterial({ color: 0xCDCDCD, side: THREE.DoubleSide });
-                var plane = new THREE.Mesh(geometry, material);
-                plane.rotation.x = 90 *(Math.PI/180);
-                plane.position.x = 5;
-                plane.position.y = -0.5;
-                plane.position.z = 5;
-                plane.receiveShadow = true;
-                scene.add(plane);
-
-                // Ambient Light
-                scene.add(new THREE.AmbientLight(0x666666));
-
-                // Directional Light
-                var directionalLight = new THREE.DirectionalLight(0xffffff);
-                directionalLight.position.set(15, 0, 5);
-                directionalLight.target.position.set(3, 0, 3);
-                directionalLight.castShadow = true;
-                directionalLight.shadowDarkness = 0.5;
-                directionalLight.shadowCameraNear = 0;
-                directionalLight.shadowCameraFar = 200;
-                directionalLight.shadowCameraLeft = -20;
-                directionalLight.shadowCameraRight = 20;
-                directionalLight.shadowCameraTop = 50;
-                directionalLight.shadowCameraBottom = -10;
-                scene.add(directionalLight);
-
-                // Render
-                renderer = new THREE.WebGLRenderer({ antialias: true });
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight + 5);
-                document.body.appendChild(renderer.domElement);
-                renderer.shadowMap.enabled = true;
-                renderer.shadowMapSoft = true;
-                renderReversedSided = true;
-            }
-
-            // Add Pointlight       <-- Error, kan dit wel?
-            function addPointLight(object, color, x, y, z, tx, ty, tz) {
-                var pointLight = new THREE.pointLight(color, intensity, distance);
-                light.position.set(x, y, z);
-                object.add(light);
-            }
-
-            // Add Spotlight        <-- Error, kan dit wel?
-            function addSpotLight(object, color, x, y, z, tx, ty, tz) {
-                var spotLight = new THREE.spotLight(color, 1, 100, 0.5, 2, 2);
-                spotLight.position.set(x, y, z);
-                spotLight.castShadow = true;
-                object.add(spotLight);
-                object.add(spotLight.target);
-                spotLight.target.position.set(tx, ty, tz);
-            }
-
-            // WindowResize [Function]
->>>>>>> ricardo
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
 
-<<<<<<< HEAD
-=======
-            // Animate [Function]
->>>>>>> ricardo
             function animate() {
                 requestAnimationFrame(animate);
                 cameraControls.update();
@@ -178,11 +89,7 @@
             }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
-            // Model Loader [Function]
->>>>>>> ricardo
             function loadOBJModel(modelPath, modelName, texturePath, textureName, onload) {
                 new THREE.MTLLoader()
                     .setPath(texturePath)
@@ -199,7 +106,6 @@
                     });
             }
 
-<<<<<<< HEAD
 >>>>>>> fabian
             exampleSocket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/connect_client");
             exampleSocket.onmessage = function (event) {
@@ -230,64 +136,32 @@
                             scene.add(group);
                             worldObjects[command.parameters.guid] = group;
 =======
-=======
-            // Model Deployer [Server]
-            exampleSocket = new WebSocket("ws://" + window.location.hostname + ":" + window.location.port + "/connect_client");
-            exampleSocket.onmessage = function (event) {
-                var command = parseCommand(event.data);
-                console.log(command);
->>>>>>> ricardo
                 if (command.command === "update") {
                     if (Object.keys(worldObjects).indexOf(command.parameters.guid) < 0) {
                         switch (command.parameters.type) {
                             case "robot":
                                 {
-<<<<<<< HEAD
                                     var group = new THREE.Group();
                                     worldObjects[command.parameters.guid] = group;
                                     loadOBJModel("Hexapod/", "rickmodel.obj", "Hexapod/", "rickmat.mtl", (mesh) => {
                                         mesh.scale.set(1, 1, 1);
                                         group.add(mesh);
                                         scene.add(group);
-=======
-                                    var robot = new THREE.Group();
-                                    robot.castShadow = true;
-                                    robot.visible = true;
-                                    worldObjects[command.parameters.guid] = robot;
-                                    loadOBJModel("Hexapod/", "rickmodel.obj", "Hexapod/", "rickmat.mtl", (mesh) => {
-                                        mesh.scale.set(1, 1, 1);
-                                        robot.add(mesh);
-                                        //addPointLight(robot, 0xffffff, 1, 0.8, 10, 2, 5);     // <-- Error?
-                                        //addSpotLight(robot, 0xffffff, 1, 0.8, 10, 2, 5);      // <-- Error?
-                                        scene.add(robot);
->>>>>>> ricardo
                                     });
                                     break;
                                 }
                             case "vrachtwagen":
                                 {
                                     var vrachtwagen = new THREE.Group();
-<<<<<<< HEAD
 
                                     worldObjects[command.parameters.guid] = vrachtwagen;
                                     loadOBJModel("Hexapod/", "Freigther_BI_Export.obj", "Hexapod/", "Freigther_BI_Export.mtl", (mesh) => {
                                         mesh.scale.set(0.5, 0.5, 0.5);
                                         vrachtwagen.add(mesh);
-=======
-                                    vrachtwagen.castShadow = true;
-                                    vrachtwagen.visible = true;
-                                    worldObjects[command.parameters.guid] = vrachtwagen;
-                                    loadOBJModel("Hexapod/", "ufo.obj", "Hexapod/", "ufo.mtl", (mesh) => {
-                                        mesh.scale.set(3, 3, 3);
-                                        vrachtwagen.add(mesh);
-                                        //addPointLight(vrachtwagen, 0xffffff, 1, 0.8, 10, 2, 5);       // <-- Error?
-                                        //addSpotLight(vrachtwagen, 0xffffff, 1, 0.8, 10, 2, 5);        // <-- Error?
->>>>>>> ricardo
                                         scene.add(vrachtwagen);
                                     });
                                     break;
                                 }
-<<<<<<< HEAD
 
                             default:
 >>>>>>> fabian
@@ -300,48 +174,10 @@
                     object.position.y = command.parameters.y;
                     object.position.z = command.parameters.z;
 
-=======
-                            case "dock":
-                                {
-                                    var dock = new THREE.Group();
-                                    dock.castShadow = true;
-                                    dock.visible = true;
-                                    worldObjects[command.parameters.guid] = dock;
-                                    loadOBJModel("Hexapod/", "dock.obj", "Hexapod/", "dock.mtl", (mesh) => {
-                                        mesh.scale.set(2, 2, 2);
-                                        dock.add(mesh);
-                                        scene.add(dock);
-                                    });
-                                    break;
-                                }
-                            case "stellage":
-                                {
-                                    var stellage = new THREE.Group();
-                                    stellage.castShadow = true;
-                                    stellage.visible = true;
-                                    worldObjects[command.parameters.guid] = stellage;
-                                    loadOBJModel("Hexapod/", "butter.obj", "Hexapod/", "butter.mtl", (mesh) => {
-                                        mesh.scale.set(1, 1, 1);
-                                        stellage.add(mesh);
-                                        scene.add(stellage);
-                                    });
-                                    break;
-                                }
-                            default:
-                        }
-                    }
-
-                    // Object Parameters
-                    var object = worldObjects[command.parameters.guid];
-                    object.position.x = command.parameters.x;
-                    object.position.y = command.parameters.y;
-                    object.position.z = command.parameters.z;
->>>>>>> ricardo
                     object.rotation.x = command.parameters.rotationX;
                     object.rotation.y = command.parameters.rotationY;
                     object.rotation.z = command.parameters.rotationZ;
                 }
-<<<<<<< HEAD
 <<<<<<< HEAD
             }
 
@@ -364,18 +200,6 @@
     <script src="MTLLoader.js"></script>
     <script src="OBJLoader.js"></script>
 >>>>>>> fabian
-=======
-            };
-            init();
-            animate();
-        };
-    </script>
-    <script src="three.min.js"></script>
-    <script src="OrbitControls.js"></script>
-    <script src="MTLLoader.js"></script>
-    <script src="OBJLoader.js"></script>
-    <script src="LightShadow.js"></script>
->>>>>>> ricardo
 </body>
 
 </html>
