@@ -14,12 +14,7 @@ namespace Controllers {
         private World w;
         private List<ObservingClient> views = new List<ObservingClient>();
         private bool running = false;
-<<<<<<< HEAD
-        private int tickTime = 50;
-=======
         private int tickTime = 17;
->>>>>>> fabian
-
         public SimulationController(World w) {
             this.w = w;
         }

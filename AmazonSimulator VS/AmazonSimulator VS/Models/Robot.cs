@@ -2,15 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-<<<<<<< HEAD
-
-namespace Models {
-    public class Robot : C3Dmodel ,IUpdatable {
-
-        public Robot(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x,y,z,rotationX,rotationY,rotationZ) {
-            this.type = "robot";
-            this.needsUpdate = true;
-=======
 using System.Collections;
 using System.Windows;
 using System.Numerics;
@@ -19,8 +10,6 @@ namespace Models
 {
     public class Robot : C3Dmodel, IUpdatable
     {
-
-        //bestemming
         public Robot(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
         {
 
@@ -65,7 +54,6 @@ namespace Models
             }
             
             return base.Update(tick);
->>>>>>> fabian
         }
     }
 }

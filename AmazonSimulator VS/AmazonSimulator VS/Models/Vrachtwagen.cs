@@ -8,11 +8,6 @@ namespace Models
     public class Vrachtwagen : C3Dmodel
     {
         public Vrachtwagen(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
-<<<<<<< HEAD
-        {
-            this.type = "vrachtwagen";
-            this.needsUpdate = true;
-=======
         {
             this.type = "vrachtwagen";
             this.guid = Guid.NewGuid();
@@ -45,7 +40,6 @@ namespace Models
             }
 
             return base.Update(tick);
->>>>>>> fabian
         }
     }
 }
