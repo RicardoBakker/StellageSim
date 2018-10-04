@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 {
   "version": 1,
   "dgSpecHash": "Mhwbr0a+vUSRiXYkHkHduwEz2mOIpvWWW3Chy8iWj4lzpg3Ugxx8GfRmgoObR6AjTaj9doK1frDw0PiAcSlbxg==",
   "success": true
+=======
+{
+  "version": 1,
+  "dgSpecHash": "QD6WRHSMoO2Xyt4/TK6+Q5C73OnN7Le+VYDjdLx+lzsUkIOYvMfD47P83IKU/7RU3PfR1op5E27htMqOw8fy+g==",
+  "success": true
+>>>>>>> ricardo
 }

@@ -27,14 +27,22 @@ namespace Controllers {
     public abstract class Model3DCommand : Command {
 
         public Model3DCommand(string type, C3Dmodel parameters) : base(type, parameters) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> ricardo
         }
     }
 
     public class UpdateModel3DCommand : Model3DCommand {
+<<<<<<< HEAD
 
         public UpdateModel3DCommand(C3Dmodel parameters) : base("update", parameters) {
 
+=======
+        
+        public UpdateModel3DCommand(C3Dmodel parameters) : base("update", parameters) {
+>>>>>>> ricardo
         }
     }
 }
