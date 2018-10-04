@@ -24,15 +24,15 @@ namespace Models
             GraphNode<String> NodeC = new GraphNode<String>("C", 5, 0.5, 10);
             GraphNode<String> NodeD = new GraphNode<String>("D", 10, 0.5, 10);
             GraphNode<String> NodeE = new GraphNode<String>("E", 10, 0.5, 5);
-            GraphNode<String> NodeF = new GraphNode<String>("F", 5, 0.5, 5);
-            GraphNode<String> NodeG = new GraphNode<String>("G", 5, 0.5, 0);
+            GraphNode<String> NodeF = new GraphNode<String>("F", 15, 0.5, 5);
+            GraphNode<String> NodeG = new GraphNode<String>("G", 15, 0.5, 15);
 
-            List<GraphNode<String>> nodelist = new List<GraphNode<String>> {NodeA, NodeB, NodeC/*, NodeD, NodeE, NodeF, NodeG*/};
+            List<GraphNode<String>> nodelist = new List<GraphNode<String>> { NodeC, NodeD, NodeE, NodeF, NodeG};
+            List<GraphNode<String>> nodelist2 = new List<GraphNode<String>> { NodeA, NodeB, NodeC, NodeD, NodeE};
             v.Rotate(0, -90*(Math.PI / 180), 0);
             r2.Rotate(0, -90 * (Math.PI / 180), 0);
-            r.GiveDestination(nodelist /*,10, 0.5, 10*/);
-            nodelist.Reverse();
-            r2.GiveDestination(nodelist/*, 1, 0.5, 10*/);
+            r.GiveDestination(nodelist);
+            r2.GiveDestination(nodelist2);
 
             v.GiveDestination(5, 0, 0);
            
