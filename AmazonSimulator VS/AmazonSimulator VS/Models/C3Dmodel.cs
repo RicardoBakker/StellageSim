@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,13 +57,13 @@ namespace Models
         }
         public virtual bool Update(int tick)
         {
-            
+
             if (needsUpdate)
             {
                 needsUpdate = false;
                 return true;
             }
-            
+
             return false;
         }
         public virtual void Move(double x, double y, double z)

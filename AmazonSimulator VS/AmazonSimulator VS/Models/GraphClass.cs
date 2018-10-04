@@ -38,6 +38,7 @@ namespace Models
         {
             get { return neighbors.AsReadOnly(); }
         }
+
         public bool AddNeighbor(GraphNode<T> neighbor)
         {
             if (neighbors.Contains(neighbor))
@@ -50,10 +51,12 @@ namespace Models
                 return true;
             }
         }
+
         public bool RemoveNeighbor(GraphNode<T> neighbor)
         {
             return neighbors.Remove(neighbor);
         }
+
         public bool RemoveAllNeighbors()
         {
             for (int i = neighbors.Count - 1; i <= 0; i--)
@@ -62,25 +65,27 @@ namespace Models
             }
             return true;
         }
-
-
     }
 
     public class Graph<T>
     {
         List<GraphNode<T>> nodes = new List<GraphNode<T>>();
+
         public Graph()
         {
 
         }
+
         public int Count
         {
             get { return nodes.Count; }
         }
+
         public IList<GraphNode<T>> Nodes
         {
             get { return nodes.AsReadOnly(); }
         }
+
         public void Clear()
         {
             foreach (GraphNode<T> node in nodes)
@@ -92,6 +97,7 @@ namespace Models
                 nodes.RemoveAt(i);
             }
         }
+
         public bool AddNode(T value, double x, double y, double z)
         {
             if (Find(value) != null)
@@ -105,6 +111,7 @@ namespace Models
             }
 
         }
+
         public bool AddEdge(T value1, T value2)
         {
             GraphNode<T> node1 = Find(value1);
@@ -123,8 +130,8 @@ namespace Models
                 node2.AddNeighbor(node1);
                 return true;
             }
-
         }
+
         public bool RemoveEdge(T value1, T value2)
         {
             GraphNode<T> node1 = Find(value1);
@@ -156,6 +163,7 @@ namespace Models
             }
             return null;
         }
+
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
@@ -166,7 +174,6 @@ namespace Models
                 {
                     builder.Append(",");
                 }
-
             }
             return base.ToString();
         }

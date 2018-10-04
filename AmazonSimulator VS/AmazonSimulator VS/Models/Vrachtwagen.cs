@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +30,7 @@ namespace Models
             {
                 Move(x + step * xDirection, y , z );
             }
-            if (Math.Round(yDestination*2, 2) != Math.Round(y, 2)) 
+            if (Math.Round(yDestination*2, 2) <= Math.Round(y, 2)) 
             {
                 Move(x , y + step * yDirection*2, z);
             }

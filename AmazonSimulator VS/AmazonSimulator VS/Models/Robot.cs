@@ -10,6 +10,8 @@ namespace Models
 {
     public class Robot : C3Dmodel, IUpdatable
     {
+
+        //Constructor
         public Robot(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
         {
 
@@ -20,12 +22,6 @@ namespace Models
         //geef bestemming
         public List<GraphNode<String>> GiveDestination(/*double x1, double y1, double z1, */List<GraphNode<String>> nodes)
         {
-            //xDirection = x1 - x;
-            //yDirection = y1 - y;
-            //zDirection = z1 - z;
-            //xDestination = x1;
-            //yDestination = y1;
-            //zDestination = z1;
             if (nodes.Count > 0)
             {
                 _DestinationList = nodes;
@@ -52,7 +48,6 @@ namespace Models
             {
               this.GiveDestination(_DestinationList);
             }
-            
             return base.Update(tick);
         }
     }
