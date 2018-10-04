@@ -1,0 +1,186 @@
+# File produced by 
+
+newmtl sub01
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.7882 0.7882 0.7882
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub01_01
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.1255 0.1255 0.1255
+  Ka 0 0 0
+  Ks 0.1255 0.1255 0.1255
+
+newmtl sub01_02
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.7882 0.7882 0.7882
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub01_03
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.6667 0.6667 0.6667
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_tower.jpg
+
+newmtl sub01_04
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.3255 0.3255 0.3255
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_tower.jpg
+
+newmtl sub01_05
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.6667 0.6667 0.6667
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_tower.jpg
+
+newmtl sub01_06
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.6902 0.6902 0.6902
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub01_07
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.7843 0.7843 0.7843
+  Ka 0 0 0
+  Ks 0.3922 0.3922 0.3922
+
+newmtl sub01_08
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.2118 0.2118 0.2118
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub01_09
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.1255 0.2863 0.302
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub01_10
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.2118 0.2118 0.2118
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub02
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.1255 0.1255 0.1255
+  Ka 0 0 0
+  Ks 0.1255 0.1255 0.1255
+
+newmtl sub02_1
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.6902 0.6902 0.6902
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub02_2
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.7843 0.7843 0.7843
+  Ka 0 0 0
+  Ks 0.3922 0.3922 0.3922
+
+newmtl sub02_3
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.2118 0.2118 0.2118
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub02_4
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.1255 0.2863 0.302
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub02_5
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.2118 0.2118 0.2118
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_round.jpg
+
+newmtl sub02_6
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.5882 0.5882 0.5882
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_groun.jpg
+
+newmtl sub02_7
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.5882 0.5882 0.5882
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_groun.jpg
+
+newmtl sub02_8
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.3255 0.3255 0.3255
+  Ka 0 0 0
+  Ks 0 0 0
+  map_Kd 02_roof.jpg
+
+newmtl sub02_9
+  Ns 26.4
+  d 1.0
+  illum 2
+  Kd 0.5882 0.5882 0.5882
+  Ka 0 0 0
+  Ks 0.2941 0.2941 0.2941
+  map_Kd 02_roof.jpg

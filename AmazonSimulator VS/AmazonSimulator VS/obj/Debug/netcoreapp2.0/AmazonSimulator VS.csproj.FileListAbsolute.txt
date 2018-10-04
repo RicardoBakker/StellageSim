@@ -20,3 +20,17 @@ C:\Users\fabia\source\repos\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netc
 C:\Users\fabia\source\repos\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfo.cs
 C:\Users\fabia\source\repos\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.dll
 C:\Users\fabia\source\repos\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
+<<<<<<< HEAD
+=======
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.deps.json
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.runtimeconfig.json
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.runtimeconfig.dev.json
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.dll
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.csprojAssemblyReference.cache
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.csproj.CoreCompileInputs.cache
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfoInputs.cache
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfo.cs
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.dll
+C:\Users\fabia\Documents\GitHub\StellageSim\AmazonSimulator VS\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
+>>>>>>> fabian
