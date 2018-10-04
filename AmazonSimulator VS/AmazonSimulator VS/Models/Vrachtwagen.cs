@@ -15,12 +15,12 @@ namespace Models
 
         public void GiveDestination(double x1, double y1, double z1)
         {
-            xDirection = x1 - x;
-            yDirection = y1 - y;
-            zDirection = z1 - z;
-            xDestination = x1;
-            yDestination = y1;
-            zDestination = z1;
+            _xDirection = x1 - x;
+            _yDirection = y1 - y;
+            _zDirection = z1 - z;
+            _xDestination = x1;
+            _yDestination = y1;
+            _zDestination = z1;
         }
 
         public override bool Update(int tick)
