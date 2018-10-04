@@ -47,7 +47,6 @@
                 plane.position.x = 5;
                 plane.position.y = -0.5;
                 plane.position.z = 5;
-                plane.castShadow = false;
                 plane.receiveShadow = true;
                 scene.add(plane);
 
@@ -56,12 +55,12 @@
 
                 // Directional Light
                 var directionalLight = new THREE.DirectionalLight(0xffffff);
-                directionalLight.position.set(5, 0, 5);
+                directionalLight.position.set(15, 0, 5);
                 directionalLight.target.position.set(0, 0, 0);
                 directionalLight.castShadow = true;
                 directionalLight.shadowDarkness = 0.5;
                 directionalLight.shadowCameraNear = 0;
-                directionalLight.shadowCameraFar = 15;
+                directionalLight.shadowCameraFar = 200;
                 directionalLight.shadowCameraLeft = -5;
                 directionalLight.shadowCameraRight = 5;
                 directionalLight.shadowCameraTop = 15;
@@ -75,6 +74,7 @@
                 document.body.appendChild(renderer.domElement);
                 renderer.shadowMap.enabled = true;
                 renderer.shadowMapSoft = true;
+                renderReversedSided = true;
             }
 
             // Add Pointlight       <-- Error, kan dit wel?
