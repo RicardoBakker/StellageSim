@@ -107,6 +107,19 @@
                 if (command.command === "update") {
                     if (Object.keys(worldObjects).indexOf(command.parameters.guid) < 0) {
                         switch (command.parameters.type) {
+                            case "island":
+                                {
+                                    var island = new THREE.Group();
+                                    island.visible = true;
+                                    worldObjects[command.parameters.guid] = island;
+                                    loadOBJModel("Hexapod/", "rickmodel.obj", "Hexapod/", "rickmat.mtl", (mesh) => {
+                                        mesh.scale.set(1, 1, 1);
+                                        mesh.traverse(function (child) { child.castShadow = true; });
+                                        island.add(mesh);
+                                        scene.add(island);
+                                    });
+                                    break;
+                                }
                             case "robot":
                                 {
                                     var robot = new THREE.Group();

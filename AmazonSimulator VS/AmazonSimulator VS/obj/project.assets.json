@@ -12663,23 +12663,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ricardo\\.nuget\\packages\\": {},
+    "C:\\Users\\RBakk\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricardo\\Desktop\\3D SIM\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
+      "projectUniqueName": "C:\\Users\\RBakk\\Desktop\\3D Project\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
       "projectName": "AmazonSimulator VS",
-      "projectPath": "C:\\Users\\Ricardo\\Desktop\\3D SIM\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
-      "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricardo\\Desktop\\3D SIM\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\obj\\",
+      "projectPath": "C:\\Users\\RBakk\\Desktop\\3D Project\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
+      "packagesPath": "C:\\Users\\RBakk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RBakk\\Desktop\\3D Project\\StellageSim\\AmazonSimulator VS\\AmazonSimulator VS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ricardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RBakk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

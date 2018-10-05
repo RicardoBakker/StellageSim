@@ -13,7 +13,7 @@ namespace Models
         public World()
         {
             // Models
-            //Island i = CreateIsland(0, -15, 0);
+            Island i = CreateIsland(0, -15, 0);
             Robot r = CreateRobot(1,  0.5, 10);
             Robot r2 = CreateRobot(1, 0.5, 10);
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
@@ -54,12 +54,12 @@ namespace Models
             d2.Rotate(0, 180 * (Math.PI / 180), 0);
         }
         // Create Island
-        //private Island CreateIsland(double x, double y, double z)
-        //{
-        //    Island i = new Island(x, y, z, 0, 0, 0);
-        //    worldObjects.Add(i);
-        //    return i;
-        //}
+        private Island CreateIsland(double x, double y, double z)
+        {
+            Island i = new Island(x, y, z, 0, 0, 0);
+            worldObjects.Add(i);
+            return i;
+        }
 
         // Create Tree
         private Tree CreateTree(double x, double y, double z)
