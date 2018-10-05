@@ -7,6 +7,7 @@
 </head>
 
 <body style="margin:0px;padding:0px;overflow:hidden;">
+
     <script>
         function parseCommand(input = "") {
             return JSON.parse(input);
@@ -46,19 +47,23 @@
                 //plane.position.y = 0;
                 //plane.position.z = 5;
                 //plane.receiveShadow = true;
-                //scene.add(plane);            
+                //scene.add(plane);
 
                 // Ambient Light
                 scene.add(new THREE.AmbientLight(0x666666));
 
                 //// Directional Light
                 var directionalLight = new THREE.DirectionalLight(0xffffff);
-                directionalLight.position.set(-50, 100, 50);
+                directionalLight.position.set(-100, 100, -10);
                 directionalLight.castShadow = true;
-                directionalLight.shadow.mapSize.width = 2480; 
-                directionalLight.shadow.mapSize.height = 2480; 
-                directionalLight.shadow.camera.near = 10;   
-                directionalLight.shadow.camera.far = 500;     
+                directionalLight.shadowMapWidth = 512;
+                directionalLight.shadowMapHeight = 512;
+                directionalLight.shadowCameraNear = 5;
+                directionalLight.shadowCameraFar = 200;
+                directionalLight.shadowCameraLeft = -10;
+                directionalLight.shadowCameraRight = 10;
+                directionalLight.shadowCameraTop = 30;
+                directionalLight.shadowCameraBottom = -10;
                 scene.add(directionalLight);
 
                 // Render
@@ -113,8 +118,8 @@
                                     island.visible = true;
                                     worldObjects[command.parameters.guid] = island;
                                     loadOBJModel("Hexapod/", "island.obj", "Hexapod/", "island.mtl", (mesh) => {
-                                        mesh.scale.set(50, 50, 50);
-                                        mesh.traverse(function (child) { child.receiveShadow = true; });
+                                        mesh.scale.set(40, 40, 40);
+                                        mesh.traverse(function (child) { child.receiveShadow = true; child.castShadow = true; });
                                         island.add(mesh);
                                         scene.add(island);
                                     });

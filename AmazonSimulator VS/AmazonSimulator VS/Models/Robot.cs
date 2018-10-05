@@ -26,16 +26,15 @@ namespace Models
         {
             if (graphNodes.Count > 0)
             {
-                _DestinationList = graphNodes;
-                _Destination = graphNodes[0];
-               _xDirection = _Destination.x - x;
-              _yDirection = _Destination.y - y;
-               _zDirection = _Destination.z- z;
-               _xDestination = _Destination.x;
-               _yDestination = _Destination.y;
-                _zDestination = _Destination.z;
-                _DestinationList.RemoveAt(0);
-                
+                 _DestinationList = graphNodes;
+                 _Destination = graphNodes[0];
+                 _xDirection = _Destination.x - x;
+                 _yDirection = _Destination.y - y;
+                 _zDirection = _Destination.z- z;
+                 _xDestination = _Destination.x;
+                 _yDestination = _Destination.y;
+                 _zDestination = _Destination.z;
+                 _DestinationList.RemoveAt(0);           
             }
         }
 

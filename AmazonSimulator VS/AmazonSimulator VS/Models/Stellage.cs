@@ -11,16 +11,28 @@ namespace Models
         {
             this.type = "stellage";
             this.guid = Guid.NewGuid();
-        }    
-
-        public void GoUp(Robot robot, double yUp)
-        {
-            if(robot.x == x && robot.z == z)
-            {
-                yUp = y + 1;
-            }
         }
 
+        public void GetPoint(List<GraphNode> nodes, double x, double y, double z)
+        {
+            
+        }
+
+        public void SetPoint(List<GraphNode> nodes, double x, double y, double z)
+        {
+
+        }
+
+        public void GetUp(double x, double y, double z)
+        {
+
+        }
+
+        public void Hide()
+        {
+
+        }
+    
         public override bool Update(int tick)
         {
             return base.Update(tick);

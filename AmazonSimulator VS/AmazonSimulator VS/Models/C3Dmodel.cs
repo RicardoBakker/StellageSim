@@ -13,20 +13,19 @@ namespace Models
         protected double _rX = 0;
         protected double _rY = 0;
         protected double _rZ = 0;
-        //protected List<GraphNode> _DestinationList;
-        //protected GraphNode _Destination;
-
-
-        protected double step = 0.002;
         protected double _xDirection;
         protected double _yDirection;
         protected double _zDirection;
         protected double _xDestination;
         protected double _yDestination;
         protected double _zDestination;
+        protected double step = 0.002;
 
+        //protected List<GraphNode> _DestinationList;
+        //protected GraphNode _Destination;
         //public List<GraphNode> DestinationList { get { return _DestinationList; } }
         //public GraphNode  Destination { get { return _Destination; } }
+
         public bool needsUpdate { set; get; }
         public string type { set; get; }
         public Guid guid { set; get; }
@@ -44,8 +43,10 @@ namespace Models
         public double rotationZ { get { return _rZ; } }
         //public List<GraphNode > DestinationList { get; set; }
         //public GraphNode  Destination { get; set; }
+
         public List<Vector> vectorList { get; set; }
         public Vector vectorDestination { get; set; }
+
         public C3Dmodel(double x, double y, double z, double rotationX, double rotationY, double rotationZ)
         {
             this._x = x;
@@ -56,17 +57,17 @@ namespace Models
             this._rZ = rotationZ;
             this.needsUpdate = true;
         }
+
         public virtual bool Update(int tick)
         {
-
             if (needsUpdate)
             {
                 needsUpdate = false;
                 return true;
             }
-
             return false;
         }
+
         public virtual void Move(double x, double y, double z)
         {
             this._x = x;
