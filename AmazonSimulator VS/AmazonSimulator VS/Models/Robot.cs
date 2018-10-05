@@ -24,12 +24,6 @@ namespace Models
         //geef bestemming
         public void GiveDestination(/*double x1, double y1, double z1, */List<Vector> graphNodes)
         {
-           // xDirection = x1 - x;
-           // yDirection = y1 - y;
-           // zDirection = z1 - z;
-           // xDestination = x1;
-           // yDestination = y1;
-           //Destination = z1;
             if (graphNodes.Count > 0)
             {
                 _DestinationList = graphNodes;

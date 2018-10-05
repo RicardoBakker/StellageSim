@@ -13,8 +13,11 @@ namespace Models
 
         public World()
         {
-            Robot r = CreateRobot(1, 0.5, 10);
-            Robot r2 = CreateRobot(1, 0.5, 1);
+            //for test
+            int a = 4;
+            int b = 0;
+            Robot r = CreateRobot(1 * a, 0.5*b, 1 * a);
+            Robot r2 = CreateRobot(1 * a, 0.5*b, 4 * a);
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
             Dock d = CreateDock(-2, 1.2, -5);
             Dock d2 = CreateDock(12, 1.2, -5);
@@ -27,34 +30,36 @@ namespace Models
             List<GraphNode> route2 = new List<GraphNode>();
             List<Vector> vectorlist1 = new List<Vector>();
             List<Vector> vectorlist2 = new List<Vector>();
+            
 
 
+            
             // S P A G H E T 
-            GraphNode NodeA = CreateNode("A", 1, 0.5, 1);
-            GraphNode NodeB = CreateNode("B", 1, 0.5, 2);
-            GraphNode NodeC = CreateNode("C", 1, 0.5, 3);
-            GraphNode NodeD = CreateNode("D", 1, 0.5, 4);
-            GraphNode NodeE = CreateNode("E", 1, 0.5, 5);
-            GraphNode NodeF = CreateNode("F", 2, 0.5, 1);
-            GraphNode NodeG = CreateNode("G", 2, 0.5, 2);
-            GraphNode NodeH = CreateNode("H", 2, 0.5, 3);
-            GraphNode NodeI = CreateNode("I", 2, 0.5, 4);
-            GraphNode NodeJ = CreateNode("J", 2, 0.5, 5);
-            GraphNode NodeK = CreateNode("K", 3, 0.5, 1);
-            GraphNode NodeL = CreateNode("L", 3, 0.5, 2);
-            GraphNode NodeM = CreateNode("M", 3, 0.5, 3);
-            GraphNode NodeN = CreateNode("N", 3, 0.5, 4);
-            GraphNode NodeO = CreateNode("O", 3, 0.5, 5);
-            GraphNode NodeP = CreateNode("P", 4, 0.5, 1);
-            GraphNode NodeQ = CreateNode("Q", 4, 0.5, 2);
-            GraphNode NodeR = CreateNode("R", 4, 0.5, 3);
-            GraphNode NodeS = CreateNode("S", 4, 0.5, 4);
-            GraphNode NodeT = CreateNode("T", 4, 0.5, 5);
-            GraphNode NodeU = CreateNode("U", 5, 0.5, 1);
-            GraphNode NodeV = CreateNode("V", 5, 0.5, 2);
-            GraphNode NodeW = CreateNode("W", 5, 0.5, 3);
-            GraphNode NodeX = CreateNode("X", 5, 0.5, 4);
-            GraphNode NodeY = CreateNode("Y", 5, 0.5, 5);
+            GraphNode NodeA = CreateNode("A", 1 * a, 0.5*b, 1 * a);
+            GraphNode NodeB = CreateNode("B", 1 * a, 0.5 * b, 2 * a);
+            GraphNode NodeC = CreateNode("C", 1 * a, 0.5 * b, 3 * a);
+            GraphNode NodeD = CreateNode("D", 1 * a, 0.5 * b, 4 * a);
+            GraphNode NodeE = CreateNode("E", 1 * a, 0.5 * b, 5 * a);
+            GraphNode NodeF = CreateNode("F", 2 * a, 0.5 * b, 1 * a);
+            GraphNode NodeG = CreateNode("G", 2 * a, 0.5 * b, 2 * a);
+            GraphNode NodeH = CreateNode("H", 2 * a, 0.5 * b, 3 * a);
+            GraphNode NodeI = CreateNode("I", 2 * a, 0.5 * b, 4 * a);
+            GraphNode NodeJ = CreateNode("J", 2 * a, 0.5 * b, 5 * a);
+            GraphNode NodeK = CreateNode("K", 3 * a, 0.5 * b, 1 * a);
+            GraphNode NodeL = CreateNode("L", 3 * a, 0.5 * b, 2 * a);
+            GraphNode NodeM = CreateNode("M", 3 * a, 0.5 * b, 3 * a);
+            GraphNode NodeN = CreateNode("N", 3 * a, 0.5 * b, 4 * a);
+            GraphNode NodeO = CreateNode("O", 3 * a, 0.5 * b, 5 * a);
+            GraphNode NodeP = CreateNode("P", 4 * a, 0.5 * b, 1 * a);
+            GraphNode NodeQ = CreateNode("Q", 4 * a, 0.5 * b, 2 * a);
+            GraphNode NodeR = CreateNode("R", 4 * a, 0.5 * b, 3 * a);
+            GraphNode NodeS = CreateNode("S", 4 * a, 0.5 * b, 4 * a);
+            GraphNode NodeT = CreateNode("T", 4 * a, 0.5 * b, 5 * a);
+            GraphNode NodeU = CreateNode("U", 5 * a, 0.5 * b, 1 * a);
+            GraphNode NodeV = CreateNode("V", 5 * a, 0.5 * b, 2 * a);
+            GraphNode NodeW = CreateNode("W", 5 * a, 0.5 * b, 3 * a);
+            GraphNode NodeX = CreateNode("X", 5 * a, 0.5 * b, 4 * a);
+            GraphNode NodeY = CreateNode("Y", 5 * a, 0.5 * b, 5 * a);
 
             // S P A G H E T 
             CreateConnection(NodeA, NodeF);
@@ -104,7 +109,7 @@ namespace Models
 
             Graph graph = new Graph(allthenodes);
             route1 = graph.FindShortestPath(NodeA, NodeU);
-            route2 = graph.FindShortestPath(NodeA, NodeJ);
+            route2 = graph.FindShortestPath(NodeD, NodeV);
             //route2 = graph.FindShortestPath(NodeK, NodeJ);
 
             //List<GraphNode > nodelist = new List<GraphNode> { NodeC, NodeD, NodeE, NodeF, NodeG };
@@ -124,7 +129,8 @@ namespace Models
 
 
         }
-        private List<Vector> ToVector(List<GraphNode> nodes) {
+        private List<Vector> ToVector(List<GraphNode> nodes)
+        {
             List<Vector> vlist = new List<Vector>();
             foreach (GraphNode node in nodes)
             {
@@ -201,7 +207,7 @@ namespace Models
                 obs.OnNext(new UpdateModel3DCommand(m3d));
             }
         }
-        
+
 
         public bool Update(int tick)
         {
