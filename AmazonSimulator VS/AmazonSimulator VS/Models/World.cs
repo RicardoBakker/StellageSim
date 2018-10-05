@@ -16,6 +16,7 @@ namespace Models
             //for test
             int a = 4;
             int b = 0;
+            Island i = CreateIsland(0, -28, 0);
             Robot r = CreateRobot(1 * a, 0.5*b, 1 * a);
             Robot r2 = CreateRobot(1 * a, 0.5*b, 4 * a);
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
@@ -25,15 +26,21 @@ namespace Models
             Stellage s2 = CreateStellage(1, 0.2, 10);
             Stellage s3 = CreateStellage(10, 0.2, 5);
             Stellage s4 = CreateStellage(6, 0.2, 8);
+            Plant p = CreatePlant(10, 0.3, 18);
+            Plant p2 = CreatePlant(2, 0.3, -4);
+            Plant p3 = CreatePlant(4, 0.3, 15);
+            Plant p4 = CreatePlant(12, 0.3, 16);
+            Plant p5 = CreatePlant(6, 0.3, -2);
+            Plant p6 = CreatePlant(10, 0.3, -6);
+            Tree t = CreateTree(-6, 0, 8);
+
             v.Rotate(0, -90 * (Math.PI / 180), 0);
+
             List<GraphNode> route1 = new List<GraphNode>();
             List<GraphNode> route2 = new List<GraphNode>();
             List<Vector> vectorlist1 = new List<Vector>();
             List<Vector> vectorlist2 = new List<Vector>();
-            
-
-
-            
+                       
             // S P A G H E T 
             GraphNode NodeA = CreateNode("A", 1 * a, 0.5*b, 1 * a);
             GraphNode NodeB = CreateNode("B", 1 * a, 0.5 * b, 2 * a);
@@ -126,8 +133,6 @@ namespace Models
             v.GiveDestination(5, 2, 0);
             d.Rotate(0, 180 * (Math.PI / 180), 0);
             d2.Rotate(0, 180 * (Math.PI / 180), 0);
-
-
         }
         private List<Vector> ToVector(List<GraphNode> nodes)
         {
@@ -154,12 +159,34 @@ namespace Models
             return n;
         }
 
+        private Island CreateIsland(double x, double y, double z)
+        {
+            Island i = new Island(x, y, z, 0, 0, 0);
+            worldObjects.Add(i);
+            return i;
+        }
+
+        private Tree CreateTree(double x, double y, double z)
+        {
+            Tree t = new Tree(x, y, z, 0, 0, 0);
+            worldObjects.Add(t);
+            return t;
+        }
+
+        private Plant CreatePlant(double x, double y, double z)
+        {
+            Plant p = new Plant(x, y, z, 0, 0, 0);
+            worldObjects.Add(p);
+            return p;
+        }
+
         private Dock CreateDock(double x, double y, double z)
         {
             Dock d = new Dock(x, y, z, 0, 0, 0);
             worldObjects.Add(d);
             return d;
         }
+
         private Stellage CreateStellage(double x, double y, double z)
         {
             Stellage s = new Stellage(x, y, z, 0, 0, 0);

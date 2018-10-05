@@ -38,33 +38,28 @@
                 scene.add(sphericalSkybox);
 
                 // Plane
-                var geometry = new THREE.PlaneBufferGeometry(20, 20, 0);
-                var material = new THREE.MeshStandardMaterial({ color: 0xCDCDCD, side: THREE.DoubleSide });
-                var plane = new THREE.Mesh(geometry, material);
-                plane.rotation.x = 90 *(Math.PI/180);
-                plane.position.x = 5;
-                plane.position.y = -0.5;
-                plane.position.z = 5;
-                plane.receiveShadow = true;
-                scene.add(plane);
-                
+                //var geometry = new THREE.CircleGeometry(15, 35, 10);
+                //var material = new THREE.MeshStandardMaterial({ color: 0xCDCDCD, side: THREE.DoubleSide });
+                //var plane = new THREE.Mesh(geometry, material);
+                //plane.rotation.x = 90 *(Math.PI/180);
+                //plane.position.x = 5;
+                //plane.position.y = 0;
+                //plane.position.z = 5;
+                //plane.receiveShadow = true;
+                //scene.add(plane);            
 
                 // Ambient Light
-               // scene.add(new THREE.AmbientLight(0x666666));
+                scene.add(new THREE.AmbientLight(0x666666));
 
                 //// Directional Light
-                //var directionalLight = new THREE.DirectionalLight(0xffffff);
-                //directionalLight.position.set(5, 15, 5);
-                //directionalLight.target.position.set(3, 0, 3);
-                //directionalLight.castShadow = true;
-                //directionalLight.shadow.Darkness = 0.5;
-                //directionalLight.shadow.Camera.Near = 0.5;
-                //directionalLight.shadow.Camera.Far = 200;
-                //directionalLight.shadow.Camera.Left = -20;
-                //directionalLight.shadow.Camera.Right = 20;
-                //directionalLight.shadow.Camera.Top = 50;
-                //directionalLight.shadow.Camera.Bottom = -10;
-                //scene.add(directionalLight);
+                var directionalLight = new THREE.DirectionalLight(0xffffff);
+                directionalLight.position.set(-50, 100, 50);
+                directionalLight.castShadow = true;
+                directionalLight.shadow.mapSize.width = 2480; 
+                directionalLight.shadow.mapSize.height = 2480; 
+                directionalLight.shadow.camera.near = 10;   
+                directionalLight.shadow.camera.far = 500;     
+                scene.add(directionalLight);
 
                 // Render
                 renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -72,44 +67,7 @@
                 renderer.setSize(window.innerWidth, window.innerHeight + 5);
                 document.body.appendChild(renderer.domElement);
                 renderer.shadowMap.enabled = true;
-                renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
-
-                //Create a DirectionalLight and turn on shadows for the light
-                var light = new THREE.DirectionalLight(0xffffff, 1, 10);
-                light.position.set(10, 100, 10); 			//default; light shining from top
-                light.castShadow = true;            // default false
-                //light.target.position.set(-1, 0, 3);
-                scene.add(light);
-
-                //Set up shadow properties for the light
-                light.shadow.mapSize.width = 5120;  // default
-                light.shadow.mapSize.height = 5102; // default
-                light.shadow.camera.near = 0;    // default
-                light.shadow.camera.far = 500;     // default
-
-                
-               // renderer.shadowMapSoft = true;
-                //renderReversedSided = true;
-
-                //Create a helper for the shadow camera (optional)
-                var helper = new THREE.CameraHelper(light.shadow.camera);
-            }
-
-            // Add Pointlight       <-- Error, kan dit wel?
-            function addPointLight(object, color, x, y, z, tx, ty, tz) {
-                var pointLight = new THREE.pointLight(color, intensity, distance);
-                light.position.set(x, y, z);
-                object.add(light);
-            }
-
-            // Add Spotlight        <-- Error, kan dit wel?
-            function addSpotLight(object, color, x, y, z, tx, ty, tz) {
-                var spotLight = new THREE.spotLight(color, 1, 100, 0.5, 2, 2);
-                spotLight.position.set(x, y, z);
-                spotLight.castShadow = true;
-                object.add(spotLight);
-                object.add(spotLight.target);
-                spotLight.target.position.set(tx, ty, tz);
+                renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             }
 
             // WindowResize [Function]
@@ -149,6 +107,19 @@
                 if (command.command === "update") {
                     if (Object.keys(worldObjects).indexOf(command.parameters.guid) < 0) {
                         switch (command.parameters.type) {
+                            case "island":
+                                {
+                                    var island = new THREE.Group();
+                                    island.visible = true;
+                                    worldObjects[command.parameters.guid] = island;
+                                    loadOBJModel("Hexapod/", "island.obj", "Hexapod/", "island.mtl", (mesh) => {
+                                        mesh.scale.set(50, 50, 50);
+                                        mesh.traverse(function (child) { child.receiveShadow = true; });
+                                        island.add(mesh);
+                                        scene.add(island);
+                                    });
+                                    break;
+                                }
                             case "robot":
                                 {
                                     var robot = new THREE.Group();
@@ -158,8 +129,6 @@
                                         mesh.scale.set(1, 1, 1);
                                         mesh.traverse(function (child) { child.castShadow = true; });
                                         robot.add(mesh);
-                                        //addPointLight(robot, 0xffffff, 1, 0.8, 10, 2, 5);     // <-- Error?
-                                        //addSpotLight(robot, 0xffffff, 1, 0.8, 10, 2, 5);      // <-- Error?
                                         scene.add(robot);
                                     });
                                     break;
@@ -173,8 +142,6 @@
                                         mesh.scale.set(3, 3, 3);
                                         mesh.traverse(function (child) { child.castShadow = true; });
                                         vrachtwagen.add(mesh);
-                                        //addPointLight(vrachtwagen, 0xffffff, 1, 0.8, 10, 2, 5);       // <-- Error?
-                                        //addSpotLight(vrachtwagen, 0xffffff, 1, 0.8, 10, 2, 5);        // <-- Error?
                                         scene.add(vrachtwagen);
                                     });
                                     break;
@@ -206,6 +173,31 @@
                                     });
                                     break;
                                 }
+                            //case "plant":
+                            //    {
+                            //        var plant = new THREE.Group();
+                            //        plant.visible = true;
+                            //        worldObjects[command.parameters.guid] = plant;
+                            //        loadOBJModel("Hexapod/", "plant.obj", "Hexapod/", "plant.mtl", (mesh) => {
+                            //            mesh.scale.set(0.5, 0.5, 0.5);
+                            //            mesh.traverse(function (child) { child.castShadow = true; });
+                            //            plant.add(mesh);
+                            //            scene.add(plant);
+                            //        });
+                            //        break;
+                            //    }
+                            //case "tree":
+                            //    {
+                            //        var tree = new THREE.Group();
+                            //        tree.visible = true;
+                            //        worldObjects[command.parameters.guid] = tree;
+                            //        loadOBJModel("Hexapod/", "IvoryCanePalmTree.obj", "Hexapod/", "IvoryCanePalmTree.mtl", (mesh) => {
+                            //            mesh.scale.set(0.5, 0.5, 0.5);
+                            //            mesh.traverse(function (child) { child.castShadow = true; });
+                            //            tree.add(mesh);
+                            //            scene.add(tree);
+                            //        });
+                            //    }
                             default:
                         }
                     }
