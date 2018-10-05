@@ -13,7 +13,7 @@ namespace Models
         public World()
         {
             // Models
-            Island i = CreateIsland(0, -15, 0);
+            Island i = CreateIsland(0, 0, 0);
             Robot r = CreateRobot(1,  0.5, 10);
             Robot r2 = CreateRobot(1, 0.5, 10);
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
