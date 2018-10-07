@@ -25,7 +25,7 @@ namespace Models
         {
             //Benodigd voor aanmaken
             _x = x;
-           _y = y;
+            _y = y;
             _z = z;
             this.name = value;
             guid = Guid.NewGuid();

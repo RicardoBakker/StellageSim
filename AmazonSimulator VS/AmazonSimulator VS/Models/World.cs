@@ -14,38 +14,14 @@ namespace Models
         public World()
         {
             //for test
-            int a = 4;
+            int a = 2;
             int b = 0;
-            Island i = CreateIsland(5, -22.5, 0);
-            Robot r = CreateRobot(1 * a, 0.5*b, 1 * a);
-            Robot r2 = CreateRobot(1 * a, 0.5*b, 4 * a);
+            Island i = CreateIsland(5, -25, 0);
+            Robot r = CreateRobot(1 * a, 0.5 * b, 1 * a);
+            Robot r2 = CreateRobot(1 * a, 0.5 * b, 4 * a);
             Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
             Dock d = CreateDock(-2, 1.2, -5);
             Dock d2 = CreateDock(12, 1.2, -5);
-            Stellage s = CreateStellage(8, -0.5, 3);
-            Stellage s2 = CreateStellage(6, -0.5, 3);
-            Stellage s3 = CreateStellage(4, -0.5, 3);
-            Stellage s4 = CreateStellage(8, -0.5, 5);
-            Stellage s5 = CreateStellage(6, -0.5, 5);
-            Stellage s6 = CreateStellage(4, -0.5, 5);
-            Stellage s7 = CreateStellage(8, -0.5, 7);
-            Stellage s8 = CreateStellage(6, -0.5, 7);
-            Stellage s9 = CreateStellage(4, -0.5, 7);
-            Stellage s10 = CreateStellage(8, -0.1, 3);
-            Stellage s11 = CreateStellage(6, -0.1, 3);
-            Stellage s12 = CreateStellage(4, -0.1, 3);
-            Stellage s13 = CreateStellage(8, -0.1, 5);
-            Stellage s14 = CreateStellage(6, -0.1, 5);
-            Stellage s15 = CreateStellage(4, -0.1, 5);
-            Stellage s16 = CreateStellage(8, -0.1, 7);
-            Stellage s17 = CreateStellage(6, -0.1, 7);
-            Stellage s18 = CreateStellage(4, -0.1, 7);
-            Stellage s19 = CreateStellage(2, -0.1, 3);
-            Stellage s20 = CreateStellage(2, -0.5, 3);
-            Stellage s21 = CreateStellage(2, -0.5, 5);
-            Stellage s22 = CreateStellage(2, -0.1, 5);
-            Stellage s23 = CreateStellage(2, -0.5, 7);
-            Stellage s24 = CreateStellage(2, -0.1, 7);
             Plant p = CreatePlant(10, 0.3, 18);
             Plant p2 = CreatePlant(2, 0.3, -4);
             Plant p3 = CreatePlant(4, 0.3, 15);
@@ -60,7 +36,7 @@ namespace Models
             List<GraphNode> route2 = new List<GraphNode>();
             List<Vector> vectorlist1 = new List<Vector>();
             List<Vector> vectorlist2 = new List<Vector>();
-                       
+
             // S P A G H E T 
             GraphNode NodeA = CreateNode("A", 1 * a, 0.5 * b, 1 * a);
             GraphNode NodeB = CreateNode("B", 1 * a, 0.5 * b, 2 * a);
@@ -171,10 +147,22 @@ namespace Models
             start.AddConnection(c);
             end.AddConnection(c);
         }
+
+        private Stellage CreateStellage(double x, double y, double z)
+        {
+            Stellage s = new Stellage(x, y, z, 0, 0, 0);
+            worldObjects.Add(s);
+            return s;
+        }
+
         private GraphNode CreateNode(string name, double x, double y, double z)
         {
             GraphNode n = new GraphNode(name, x, y, z);
             allthenodes.Add(n);
+            foreach (GraphNode node in allthenodes)
+            {
+                CreateStellage(x, y, z);
+            }
             return n;
         }
 
@@ -184,7 +172,7 @@ namespace Models
             worldObjects.Add(i);
             return i;
         }
-
+        
         private Tree CreateTree(double x, double y, double z)
         {
             Tree t = new Tree(x, y, z, 0, 0, 0);
@@ -204,13 +192,6 @@ namespace Models
             Dock d = new Dock(x, y, z, 0, 0, 0);
             worldObjects.Add(d);
             return d;
-        }
-
-        private Stellage CreateStellage(double x, double y, double z)
-        {
-            Stellage s = new Stellage(x, y, z, 0, 0, 0);
-            worldObjects.Add(s);
-            return s;
         }
 
         private Vrachtwagen CreateVrachtwagen(double x, double y, double z)
