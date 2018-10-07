@@ -7,6 +7,8 @@ namespace Models
 {
     public class Vrachtwagen : C3Dmodel
     {
+        int count;
+
         public Vrachtwagen(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
         {
             this.type = "vrachtwagen";
@@ -21,6 +23,14 @@ namespace Models
             _xDestination = x1;
             _yDestination = y1;
             _zDestination = z1;
+        }
+
+        public void SpawnRobots()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                count++;
+            }
         }
 
         public override bool Update(int tick)

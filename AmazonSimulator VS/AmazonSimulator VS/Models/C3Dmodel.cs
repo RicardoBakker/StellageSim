@@ -21,11 +21,6 @@ namespace Models
         protected double _zDestination;
         protected double step = 0.002;
 
-        //protected List<GraphNode> _DestinationList;
-        //protected GraphNode _Destination;
-        //public List<GraphNode> DestinationList { get { return _DestinationList; } }
-        //public GraphNode  Destination { get { return _Destination; } }
-
         public bool needsUpdate { set; get; }
         public string type { set; get; }
         public Guid guid { set; get; }
@@ -41,8 +36,6 @@ namespace Models
         public double rotationX { get { return _rX; } }
         public double rotationY { get { return _rY; } }
         public double rotationZ { get { return _rZ; } }
-        //public List<GraphNode > DestinationList { get; set; }
-        //public GraphNode  Destination { get; set; }
 
         public List<Vector> vectorList { get; set; }
         public Vector vectorDestination { get; set; }

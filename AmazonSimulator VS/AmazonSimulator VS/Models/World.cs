@@ -13,9 +13,19 @@ namespace Models
 
         public World()
         {
-            //for test
+            #region [Variables]
             int a = 2;
             int b = 0;
+            #endregion
+
+            #region [Lists]
+            List<GraphNode> route1 = new List<GraphNode>();
+            List<GraphNode> route2 = new List<GraphNode>();
+            List<Vector> vectorlist1 = new List<Vector>();
+            List<Vector> vectorlist2 = new List<Vector>();
+            #endregion
+
+            #region [Create Objects]
             Island i = CreateIsland(5, -25, 0);
             Robot r = CreateRobot(1 * a, 0.5 * b, 1 * a);
             Robot r2 = CreateRobot(1 * a, 0.5 * b, 4 * a);
@@ -23,21 +33,23 @@ namespace Models
             Dock d = CreateDock(-2, 1.2, -5);
             Dock d2 = CreateDock(12, 1.2, -5);
             Plant p = CreatePlant(10, 0.3, 18);
-            Plant p2 = CreatePlant(2, 0.3, -4);
+            Plant p2 = CreatePlant(2, 0.3, -12);
             Plant p3 = CreatePlant(4, 0.3, 15);
             Plant p4 = CreatePlant(12, 0.3, 16);
-            Plant p5 = CreatePlant(6, 0.3, -2);
-            Plant p6 = CreatePlant(10, 0.3, -6);
+            Plant p5 = CreatePlant(6, 0.3, -12);
+            Plant p6 = CreatePlant(10, 0.3, -16);
             Tree t = CreateTree(-6, 0, 8);
+            #endregion
 
+            #region [Rotate Objects]
+            d.Rotate(0, 180 * (Math.PI / 180), 0);
+            d2.Rotate(0, 180 * (Math.PI / 180), 0);
+            r.Rotate(0, -90 * (Math.PI / 180), 0);
+            r2.Rotate(0, -90 * (Math.PI / 180), 0);
             v.Rotate(0, -90 * (Math.PI / 180), 0);
+            #endregion
 
-            List<GraphNode> route1 = new List<GraphNode>();
-            List<GraphNode> route2 = new List<GraphNode>();
-            List<Vector> vectorlist1 = new List<Vector>();
-            List<Vector> vectorlist2 = new List<Vector>();
-
-            // S P A G H E T 
+            #region [Create Nodes]
             GraphNode NodeA = CreateNode("A", 1 * a, 0.5 * b, 1 * a);
             GraphNode NodeB = CreateNode("B", 1 * a, 0.5 * b, 2 * a);
             GraphNode NodeC = CreateNode("C", 1 * a, 0.5 * b, 3 * a);
@@ -63,8 +75,9 @@ namespace Models
             GraphNode NodeW = CreateNode("W", 5 * a, 0.5 * b, 3 * a);
             GraphNode NodeX = CreateNode("X", 5 * a, 0.5 * b, 4 * a);
             GraphNode NodeY = CreateNode("Y", 5 * a, 0.5 * b, 5 * a);
+            #endregion
 
-            // S P A G H E T 
+            #region [Connect Nodes]
             CreateConnection(NodeA, NodeF);
             CreateConnection(NodeA, NodeB);
             CreateConnection(NodeB, NodeG);
@@ -73,8 +86,7 @@ namespace Models
             CreateConnection(NodeC, NodeH);
             CreateConnection(NodeD, NodeI);
             CreateConnection(NodeD, NodeE);
-            CreateConnection(NodeE, NodeJ);
-            // S P A G H E T 
+            CreateConnection(NodeE, NodeJ);      
             CreateConnection(NodeF, NodeK);
             CreateConnection(NodeF, NodeG);
             CreateConnection(NodeG, NodeL);
@@ -84,7 +96,6 @@ namespace Models
             CreateConnection(NodeI, NodeN);
             CreateConnection(NodeI, NodeJ);
             CreateConnection(NodeJ, NodeO);
-            // S P A G H E T 
             CreateConnection(NodeK, NodeP);
             CreateConnection(NodeK, NodeL);
             CreateConnection(NodeL, NodeQ);
@@ -94,7 +105,6 @@ namespace Models
             CreateConnection(NodeN, NodeS);
             CreateConnection(NodeN, NodeO);
             CreateConnection(NodeO, NodeI);
-            // S P A G H E T 
             CreateConnection(NodeP, NodeU);
             CreateConnection(NodeP, NodeQ);
             CreateConnection(NodeQ, NodeV);
@@ -104,30 +114,22 @@ namespace Models
             CreateConnection(NodeS, NodeX);
             CreateConnection(NodeS, NodeI);
             CreateConnection(NodeT, NodeY);
-            // S P A G H E T 
             CreateConnection(NodeU, NodeV);
             CreateConnection(NodeV, NodeW);
             CreateConnection(NodeW, NodeX);
             CreateConnection(NodeX, NodeY);
+            #endregion
 
             Graph graph = new Graph(allthenodes);
             route1 = graph.FindShortestPath(NodeA, NodeU);
             route2 = graph.FindShortestPath(NodeD, NodeV);
-            //route2 = graph.FindShortestPath(NodeK, NodeJ);
-            //List<GraphNode > nodelist = new List<GraphNode> { NodeC, NodeD, NodeE, NodeF, NodeG };
-            //List<GraphNode > nodelist2 = new List<GraphNode> { NodeA, NodeB, NodeC, NodeD, NodeE };
-
-            v.Rotate(0, -90 * (Math.PI / 180), 0);
-            r2.Rotate(0, -90 * (Math.PI / 180), 0);
 
             vectorlist1 = ToVector(route1);
             vectorlist2 = ToVector(route2);
+
             r.GiveDestination(vectorlist1);
             r2.GiveDestination(vectorlist2);
-
             v.GiveDestination(5, 2, 0);
-            d.Rotate(0, 180 * (Math.PI / 180), 0);
-            d2.Rotate(0, 180 * (Math.PI / 180), 0);
         }
         private List<Vector> ToVector(List<GraphNode> nodes)
         {
@@ -235,7 +237,6 @@ namespace Models
             }
         }
 
-
         public bool Update(int tick)
         {
             for (int i = 0; i < worldObjects.Count; i++)
@@ -252,7 +253,6 @@ namespace Models
                     }
                 }
             }
-
             return true;
         }
     }
