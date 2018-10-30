@@ -13,20 +13,34 @@ namespace Models
 
         public World()
         {
+
+            //Vector v1 = CreateVector();
+            //Vector v2 = CreateVector();
+            //Vector v3 = CreateVector();
+            //Vector v4 = CreateVector();
+            //Vector v5 = CreateVector();
+            //Vector v6 = CreateVector();
+            //Vector v7 = CreateVector();
+            //Vector v8 = CreateVector();
+            //Vector v9 = CreateVector();
+            //Vector v0 = CreateVector();
+
+
+
             //for test
             int a = 4;
             int b = 0;
             Island i = CreateIsland(0, -28, 0);
-            Robot r = CreateRobot(1 * a, 0.5*b, 1 * a);
-            Robot r2 = CreateRobot(1 * a, 0.5*b, 4 * a);
-            Vrachtwagen v = CreateVrachtwagen(30, 10, -3.5);
+            Robot r = CreateRobot(-1 * a, 0.5 * b, -5 * a);
+            Robot r2 = CreateRobot(-1 * a, 0.5 * b, -4 * a);
+            
             Dock d = CreateDock(-2, 1.2, -5);
             Dock d2 = CreateDock(12, 1.2, -5);
             Stellage s = CreateStellage(10, 0.2, 10);
             Stellage s2 = CreateStellage(1, 0.2, 10);
             Stellage s3 = CreateStellage(10, 0.2, 5);
             Stellage s4 = CreateStellage(6, 0.2, 8);
-            Plant p = CreatePlant(10, 0.3, 18);
+            Plant p = CreatePlant(10, 10, 18);
             Plant p2 = CreatePlant(2, 0.3, -4);
             Plant p3 = CreatePlant(4, 0.3, 15);
             Plant p4 = CreatePlant(12, 0.3, 16);
@@ -34,13 +48,22 @@ namespace Models
             Plant p6 = CreatePlant(10, 0.3, -6);
             Tree t = CreateTree(-6, 0, 8);
 
-            v.Rotate(0, -90 * (Math.PI / 180), 0);
+            //v.Rotate(0, -90 * (Math.PI / 180), 0);
 
             List<GraphNode> route1 = new List<GraphNode>();
             List<GraphNode> route2 = new List<GraphNode>();
             List<Vector> vectorlist1 = new List<Vector>();
             List<Vector> vectorlist2 = new List<Vector>();
-                       
+            List<Vector> vectorlist3 = new List<Vector>{CreateVector(35, -25, -7) ,CreateVector(25, -15, -7),CreateVector(26, -10, -0),CreateVector(25, 0, -0),CreateVector(20, 10, 2),CreateVector(15, 0, -2) };
+            List<Vector> vectorlist4 = new List<Vector>();
+            List<Vector> Exitlist = new List<Vector>{CreateVector(15, 0, -2), CreateVector(15, 4, -2), CreateVector(5, 4, -2), CreateVector(-5, 0, -2), CreateVector(-5, -7, 0) };
+           Vrachtwagen v = CreateVrachtwagen(35, -25, -7,Exitlist);
+            //vectorlist3.Add(CreateVector(5, -0, -0));
+            //vectorlist3.Add(CreateVector(15, -0, -3));
+            //vectorlist3.Add(CreateVector(10, 0, 0));
+            //vectorlist3.Add(CreateVector(5, 0, -0));
+
+
             // S P A G H E T 
             GraphNode NodeA = CreateNode("A", 1 * a, 0.5*b, 1 * a);
             GraphNode NodeB = CreateNode("B", 1 * a, 0.5 * b, 2 * a);
@@ -116,24 +139,30 @@ namespace Models
 
             Graph graph = new Graph(allthenodes);
             route1 = graph.FindShortestPath(NodeA, NodeU);
-            route2 = graph.FindShortestPath(NodeD, NodeV);
+            route2 = graph.FindShortestPath(NodeA, NodeV);
             //route2 = graph.FindShortestPath(NodeK, NodeJ);
 
             //List<GraphNode > nodelist = new List<GraphNode> { NodeC, NodeD, NodeE, NodeF, NodeG };
             //List<GraphNode > nodelist2 = new List<GraphNode> { NodeA, NodeB, NodeC, NodeD, NodeE };
 
-            v.Rotate(0, -90 * (Math.PI / 180), 0);
+            //v.Rotate(0, -90 * (Math.PI / 180), 0);
             r2.Rotate(0, -90 * (Math.PI / 180), 0);
-
+            p.Move(10,10,10);
             vectorlist1 = ToVector(route1);
             vectorlist2 = ToVector(route2);
             r.GiveDestination(vectorlist1);
             r2.GiveDestination(vectorlist2);
 
-            v.GiveDestination(5, 2, 0);
+            v.GiveDestination(vectorlist3);
             d.Rotate(0, 180 * (Math.PI / 180), 0);
             d2.Rotate(0, 180 * (Math.PI / 180), 0);
+            i.Rotate(0, 130 * (Math.PI / 180), 0);
         }
+        private Vector CreateVector(double x, double y, double z)
+        {
+            return new Vector(x,y,z);
+        }
+
         private List<Vector> ToVector(List<GraphNode> nodes)
         {
             List<Vector> vlist = new List<Vector>();
@@ -194,9 +223,9 @@ namespace Models
             return s;
         }
 
-        private Vrachtwagen CreateVrachtwagen(double x, double y, double z)
+        private Vrachtwagen CreateVrachtwagen(double x, double y, double z, List<Vector> exit)
         {
-            Vrachtwagen v = new Vrachtwagen(x, y, z, 0, 0, 0);
+            Vrachtwagen v = new Vrachtwagen(x, y, z, 0, 0, 0, exit);
             worldObjects.Add(v);
             return v;
         }

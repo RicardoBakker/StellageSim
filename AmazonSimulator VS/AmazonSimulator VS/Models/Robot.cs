@@ -34,6 +34,28 @@ namespace Models
                _xDestination = _Destination.x;
                _yDestination = _Destination.y;
                 _zDestination = _Destination.z;
+                //var rxy = Math.Sqrt(Math.Pow(_xDirection, 2) + Math.Pow(_yDirection, 2));
+                //var lambda = Math.Atan(_yDirection / _xDirection);
+                ////var phi = Math.Atan(_zDirection / rxy);
+                ////if (_xDirection < 0) { phi = phi + 180; Rotate(0, phi, 0); }
+                //if (_zDirection < 0) { lambda = -1 * lambda; Rotate(0, lambda, 0); }
+
+                if (Math.Round(xDirection,0) >0)
+                {
+                    Rotate(0,0, 0);
+                }
+                else if (Math.Round(zDirection, 0) > 0)
+                {
+                    Rotate(0, -Math.PI/2 , 0);
+                }
+                else if (Math.Round(zDirection, 0) < 0)
+                {
+                    Rotate(0, Math.PI/2, 0);
+                }
+                else if (Math.Round(xDirection, 0) < 0)
+                {
+                    Rotate(0, Math.PI, 0);
+                }
                 _DestinationList.RemoveAt(0);
                 
             }
